@@ -1,15 +1,8 @@
-<mat-drawer-container class="case-study">
-  <mat-drawer mode="side" opened class="left-drawer">
-    <h2>案例（出处见来源）</h2>
-    <ul>
-      <li *ngFor="let casestudy of cases"
-          (click)="clickCase(casestudy.source)"
-          [ngClass]="casestudy.source === currentSource ? 'active' : '' ">
-        <span>{{casestudy.displayName}}</span>
-      </li>
-    </ul>
-  </mat-drawer>
-  <mat-drawer-content>
-    <component-markdown-render [src]="src"></component-markdown-render>
-  </mat-drawer-content>
-</mat-drawer-container>
+<ledge-multiple-docs
+  [items]="items"
+  [currentUrl]="currentUrl"
+  [urlPrefix]="urlPrefix"
+  [source]="currentSource"
+>
+
+</ledge-multiple-docs>

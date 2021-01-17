@@ -1,83 +1,122 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './presentation/home/home.component';
-import { CaseStudyComponent } from './presentation/case-study/case-study.component';
-import { PatternComponent } from './presentation/pattern/pattern.component';
-import { DesignComponent } from './presentation/design/design.component';
-import { PractiseComponent } from './presentation/practise/practise.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ToolsetComponent } from './presentation/toolset/toolset.component';
 import { ManualComponent } from './presentation/manual/manual.component';
-import {MaturityComponent} from './presentation/maturity/maturity.component';
-import {ResourcesComponent} from './presentation/resources/resources.component';
-import {ReporterComponent} from './presentation/reporter/reporter.component';
-import {AwesomeToolComponent} from './presentation/awesome-tool/awesome-tool.component';
-import {MobileComponent} from './presentation/mobile/mobile.component';
-import { ToolsetComponent } from './shared/toolset/toolset.component';
-import { LedgeHelperComponent } from './presentation/ledge-helper/ledge-helper.component';
-import { ThinkTankComponent } from './presentation/think-tank/think-tank.component';
+import { PatternComponent } from './presentation/pattern/pattern.component';
+import { ResourcesComponent } from './presentation/resources/resources.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: '/home'},
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'case-study',
+    loadChildren: () =>
+      import('./presentation/case-study/case-study.module').then(
+        (m) => m.CaseStudyModule
+      ),
   },
   {
-    path: 'casestudy',
-    component: CaseStudyComponent
+    path: 'solution',
+    loadChildren: () =>
+      import('./presentation/solution/solution.module').then(
+        (m) => m.SolutionModule
+      ),
   },
   {
-    path: 'pattern',
-    component: PatternComponent
+    path: 'checklists',
+    loadChildren: () =>
+      import('./presentation/checklists/checklists.module').then(
+        (m) => m.ChecklistsModule
+      ),
   },
   {
-    path: 'design',
-    component: DesignComponent
-  },
-  {
-    path: 'practise',
-    component: PractiseComponent
-  },
-  {
-    path: 'manual',
-    component: ManualComponent
-  },
-  {
-    path: 'maturity',
-    component: MaturityComponent
-  },
-  {
-    path: 'resources',
-    component: ResourcesComponent
-  },
-  {
-    path: 'report',
-    component: ReporterComponent
-  },
-  {
-    path: 'tool',
-    component: AwesomeToolComponent
-  },
-  {
-    path: 'mobile',
-    component: MobileComponent
-  },
-  {
-    path: 'toolset',
-    component: ToolsetComponent
+    path: 'partners',
+    loadChildren: () =>
+      import('./presentation/partners/partners.module').then(
+        (m) => m.PartnersModule
+      ),
   },
   {
     path: 'think-tank',
-    component: ThinkTankComponent
+    loadChildren: () =>
+      import('./presentation/think-tank/think-tank.module').then(
+        (m) => m.ThinkTankModule
+      ),
+  },
+  {
+    path: 'practise',
+    loadChildren: () =>
+      import('./presentation/practise/practise.module').then(
+        (m) => m.PractiseModule
+      ),
+  },
+  {
+    path: 'pattern',
+    component: PatternComponent,
+  },
+  {
+    path: 'manual',
+    component: ManualComponent,
+  },
+  {
+    path: 'resources',
+    component: ResourcesComponent,
+  },
+  {
+    path: 'tool',
+    component: ToolsetComponent,
+  },
+  {
+    path: 'design',
+    loadChildren: () =>
+      import('./presentation/design/design.module').then((m) => m.DesignModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./presentation/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'job',
+    loadChildren: () =>
+      import('./presentation/job/job.module').then((m) => m.JobModule),
   },
   {
     path: 'helper',
-    component: LedgeHelperComponent
-  }
+    loadChildren: () =>
+      import('./presentation/ledge-editor/ledge-editor.module').then(
+        (m) => m.LedgeEditorModule
+      ),
+  },
+  {
+    path: 'skilltree',
+    loadChildren: () =>
+      import('./presentation/skill-tree/skill-tree.module').then(
+        (m) => m.SkillTreeModule
+      ),
+  },
+  {
+    path: 'report',
+    loadChildren: () =>
+      import('./presentation/reporter/reporter.module').then(
+        (m) => m.ReporterModule
+      ),
+  },
+  {
+    path: 'guide',
+    loadChildren: () =>
+      import('./presentation/guide/guide.module').then((m) => m.GuideModule),
+  },
+  {
+    path: 'maturity',
+    loadChildren: () =>
+      import('./presentation/maturity/maturity.module').then(
+        (m) => m.MaturityModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

@@ -1,8 +1,13 @@
 .maturity {
-  width: 1200px;
-  margin: 0 auto;
+  width: 80%;
+  max-width: 1200px;
+  margin: 66px auto 0;
+  height: calc(100vh - 66px);
 }
 
-.center {
-  margin: 0.5em;
+.maturity-outline {
+  font-size: 20px;
+  text-indent: 50px;
+  line-height: 30px;
+  padding: 50px;
 }
